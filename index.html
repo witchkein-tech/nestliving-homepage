@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>네스트리빙케어</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/webfontworld/naver/NanumBarunGothic.css" rel="stylesheet">
+  <style>
+    .service-btn {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.25);
+      border: 1.7px solid rgba(255,255,255,0.36);
+      box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      color: #222;
+      border-radius: 2.5rem;
+      transition: background 0.24s, color 0.2s, border 0.2s, box-shadow 0.2s, border-radius 0.2s;
+    }
+    .service-btn::before {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      top: -60%;
+      left: -60%;
+      width: 220%;
+      height: 220%;
+      background: linear-gradient(120deg, rgba(240,250,255,0.38) 47%, rgba(123,196,187,0.38), rgba(229,92,49,0.32), rgba(139,92,246,0.21) 100%);
+      opacity: 0.73;
+      z-index: 0;
+      filter: blur(6.5px) saturate(1.32);
+      transition: opacity 0.27s;
+      border-radius: 3.5rem;
+    }
+    .service-btn > * { position: relative; z-index: 1; }
+    .service-btn:hover {
+      background: linear-gradient(120deg, rgba(240,250,255,0.12) 40%, #e55c31 62%, rgba(229,92,49,0.46) 100%);
+      color: #fff !important;
+      border-color: rgba(255,255,255,0.36) !important;
+      box-shadow: 0 8px 40px 0 rgba(229,92,49,0.13);
+    }
+    .service-btn:hover::before {
+      opacity: 0.56;
+      background: linear-gradient(120deg, rgba(229,92,49,0.19) 27%, rgba(240,250,255,0.16) 65%, rgba(123,196,187,0.14), rgba(139,92,246,0.10) 100%);
+    }
+    .contact-btn {
+      position: relative;
+      overflow: hidden;
+      background-color: rgba(255,255,255,0.23);
+      color: #000 !important;
+      box-shadow: 0 3px 18px 0 rgba(0,0,0,0.10);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.7px solid rgba(255,255,255,0.26);
+      border-radius: 2.5rem;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, border-radius 0.2s;
+    }
+    .contact-btn::before {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      top: -60%;
+      left: -60%;
+      width: 220%;
+      height: 220%;
+      background: linear-gradient(120deg, rgba(240,250,255,0.29) 37%, rgba(229,92,49,0.28) 71%, rgba(123,196,187,0.23) 100%);
+      opacity: 0.79;
+      z-index: 0;
+      filter: blur(6.5px) saturate(1.26);
+      border-radius: 3.5rem;
+      transition: opacity 0.26s, background 0.28s;
+    }
+    .contact-btn > * { position: relative; z-index: 1; }
+    .contact-btn:hover {
+      background: linear-gradient(120deg, rgba(240,250,255,0.10), #e55c31 60%, rgba(229,92,49,0.41) 100%);
+      color: #fff !important;
+      box-shadow: 0 8px 40px 0 rgba(229,92,49,0.14);
+      border-color: rgba(255,255,255,0.26) !important;
+    }
+    .contact-btn:hover::before {
+      opacity: 0.54;
+      background: linear-gradient(120deg, rgba(229,92,49,0.24) 22%, rgba(240,250,255,0.16) 60%, rgba(123,196,187,0.16), rgba(139,92,246,0.08) 100%);
+    }
+    .menu-link {
+      background: none !important;
+      border: none !important;
+      filter: none !important;
+      box-shadow: none !important;
+      color: #222;
+      border-radius: 0;
+      padding: 0;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+    .menu-link:hover {
+      color: #e55c31 !important;
+      background: none !important;
+    }
+  </style>
+</head>
+<body style="background: linear-gradient(to bottom, #e4f7f5 0%, #7bc4bb 100%); font-family: 'NanumBarunGothic', sans-serif;" class="text-gray-800">
+  <!-- 상단 헤더 -->
+  <header class="flex items-center justify-between px-6 py-4 bg-mint-200">
+    <div class="flex items-center gap-2">
+      <a href="index.html"><img src="logo.svg" alt="로고" class="w-8 h-8" /></a>
+      <a href="index.html" class="text-xl font-bold">네스트리빙케어</a>
+    </div>
+    <nav>
+      <ul class="flex gap-5 text-base font-medium relative">
+        <li><a href="#about" class="menu-link transition-colors">회사소개</a></li>
+        <!-- 홈클리닝 드롭다운 트리거 -->
+        <li class="relative">
+          <a href="homecleaning.html" class="menu-link transition-colors" id="homecleaning-menu-btn">홈클리닝</a>
+        </li>
+        <li><a href="#services" class="menu-link transition-colors">사업장클리닝</a></li>
+        <li><a href="#services" class="menu-link transition-colors">특수클리닝</a></li>
+        <li><a href="#services" class="menu-link transition-colors">부가서비스</a></li>
+        <li><a href="board.html" class="menu-link transition-colors">게시판</a></li>
+        <li><a href="#faq" class="menu-link transition-colors">문의사항</a></li>
+      </ul>
+      <!-- 가로 드롭다운: 홈클리닝 클릭 시 표시 -->
+      <div id="homecleaning-dropdown" style="display:none;" class="fixed top-20 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-90 rounded-2xl shadow-2xl border z-40 px-8 py-3 flex gap-10 items-center min-w-[320px] max-w-[90vw] justify-center animate-fade-in">
+        <a href="#services" class="px-7 py-3 text-base text-gray-800 font-semibold hover:text-primary transition">입주청소</a>
+        <a href="#services" class="px-7 py-3 text-base text-gray-800 font-semibold hover:text-primary transition">이사청소</a>
+        <a href="#services" class="px-7 py-3 text-base text-gray-800 font-semibold hover:text-primary transition">인테리어청소</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 메인 비주얼 -->
+  <section class="text-center py-12 bg-mint-100">
+    <img src="logo.svg" alt="로고" class="mx-auto w-16 h-16 mb-4" />
+    <h2 class="text-3xl font-bold mb-4">청소와 공간 케어의 모든 것,<br>네스트리빙케어</h2>
+    <div class="mt-4">
+      <button class="contact-btn px-6 py-2 rounded" type="button">문의하기</button>
+    </div>
+  </section>
+
+  <!-- 서비스 소개 -->
+  <section id="services" class="px-6 py-12">
+    <h3 class="text-2xl font-semibold mb-6">서비스 소개</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="p-4 border rounded text-center service-btn cursor-pointer transition"><a href="homecleaning.html" class="block w-full h-full">홈클리닝</a></div>
+      <div class="p-4 border rounded text-center service-btn cursor-pointer transition">사업장클리닝</div>
+      <div class="p-4 border rounded text-center service-btn cursor-pointer transition">특수클리닝</div>
+      <div class="p-4 border rounded text-center service-btn cursor-pointer transition">부가서비스</div>
+    </div>
+  </section>
+
+  <!-- 시공 사례 -->
+  <section id="portfolio" class="px-6 py-12 bg-gray-50">
+    <h3 class="text-2xl font-semibold mb-6">시공 사례</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <img src="https://source.unsplash.com/random/600x380?sig=1&project" alt="시공 사례 1" class="w-full rounded shadow" />
+      <img src="https://source.unsplash.com/random/600x380?sig=2&clean&house" alt="시공 사례 2" class="w-full rounded shadow" />
+      <img src="https://source.unsplash.com/random/600x380?sig=3&interior" alt="시공 사례 3" class="w-full rounded shadow" />
+    </div>
+  </section>
+  <!-- 무료견적받기 버튼 -->
+  <div class="w-full flex justify-center py-7">
+    <button class="contact-btn px-8 py-3 rounded text-lg font-semibold">무료견적받기</button>
+  </div>
+
+  <!-- 회사 소개 + 블로그 나란히 배치 -->
+  <section class="flex flex-col md:flex-row gap-8 px-6 py-12">
+    <!-- 회사 소개 -->
+    <div class="md:w-1/2 w-full">
+      <h3 class="text-2xl font-semibold mb-6">회사 소개</h3>
+      <p class="text-gray-700 leading-relaxed">
+        네스트리빙케어는 15만 유튜버 태박이, 인테리어 전문가, 청소 전문가가 함께 운영하는
+        프리미엄 공간 케어 브랜드입니다. 민트색 새 캐릭터와 함께, 고객의 새 보금자리를 더욱 깨끗하고 쾌적하게 만들어드립니다.
+      </p>
+    </div>
+    <!-- 블로그(노트 스타일) -->
+    <div class="md:w-1/2 w-full">
+      <h3 class="text-2xl font-semibold mb-6">블로그</h3>
+      <ul class="divide-y divide-mint-200 bg-transparent">
+        <li class="py-5">
+          <h4 class="font-semibold mb-1">입주청소 꿀팁</h4>
+          <p class="text-gray-600 text-sm">입주 전 반드시 체크해야 할 청소 리스트 정리</p>
+        </li>
+        <li class="py-5">
+          <h4 class="font-semibold mb-1">줄눈시공 관리법</h4>
+          <p class="text-gray-600 text-sm">줄눈 시공 후 유지 관리를 위한 핵심 노하우</p>
+        </li>
+        <li class="py-5">
+          <h4 class="font-semibold mb-1">새집증후군 제거 방법</h4>
+          <p class="text-gray-600 text-sm">천연 제품을 활용한 실내 공기 케어 가이드</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <!-- 상담받기 버튼 -->
+  <div class="w-full flex justify-center py-7">
+    <button class="contact-btn px-8 py-3 rounded text-lg font-semibold">상담받기</button>
+  </div>
+
+  <!-- FAQ -->
+  <section id="faq" class="px-6 py-12">
+    <h3 class="text-2xl font-semibold mb-6">자주 묻는 질문 (FAQ)</h3>
+    <div class="space-y-4">
+      <details class="p-4 border rounded">
+        <summary class="cursor-pointer font-medium">Q. 청소 예약은 어떻게 하나요?</summary>
+        <p class="mt-2 text-gray-600">예약은 온라인 폼 또는 전화로 가능합니다.</p>
+      </details>
+      <details class="p-4 border rounded">
+        <summary class="cursor-pointer font-medium">Q. 견적은 무료인가요?</summary>
+        <p class="mt-2 text-gray-600">네, 무료입니다.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="text-center py-6 text-sm text-gray-500">
+    &copy; 2025 네스트리빙케어. All rights reserved.
+  </footer>
+  <script>
+    let hcDrop = document.getElementById('homecleaning-dropdown');
+    let hcBtn = document.getElementById('homecleaning-menu-btn');
+    function toggleHomeCleaningDropdown(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      hcDrop.style.display = (hcDrop.style.display === 'none' || hcDrop.style.display === '') ? 'flex' : 'none';
+    }
+    document.addEventListener('click', function(e) {
+      if (!hcDrop.contains(e.target) && e.target !== hcBtn) {
+        hcDrop.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
