@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://witchkein-tech.github.io/nestliving-homepage/sitemap.xml
+
