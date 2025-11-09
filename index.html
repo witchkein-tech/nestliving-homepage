@@ -138,6 +138,44 @@
         left: 200%;
       }
     }
+    /* 히어로 섹션 배경 이미지 */
+    .hero-section {
+      position: relative;
+      background-image: url('images/right_bg.png');
+      background-size: cover;
+      background-position: center right;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle, rgba(131, 221, 188, 0.5), rgba(242, 253, 247, 1));
+      z-index: 0;
+    }
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse 500px 500px at top left, rgba(242, 253, 247, 0.95) 0%, rgba(242, 253, 247, 0.7) 30%, transparent 60%),
+        radial-gradient(ellipse 500px 500px at top right, rgba(242, 253, 247, 0.95) 0%, rgba(242, 253, 247, 0.7) 30%, transparent 60%),
+        radial-gradient(ellipse 500px 500px at bottom left, rgba(242, 253, 247, 0.95) 0%, rgba(242, 253, 247, 0.7) 30%, transparent 60%),
+        radial-gradient(ellipse 500px 500px at bottom right, rgba(242, 253, 247, 0.95) 0%, rgba(242, 253, 247, 0.7) 30%, transparent 60%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-section > * {
+      position: relative;
+      z-index: 2;
+    }
     .service-btn {
       position: relative;
       overflow: hidden;
@@ -538,8 +576,8 @@
   </div>
 
   <!-- 메인 비주얼 -->
-  <section class="text-center py-12 bg-mint-100" role="main">
-    <img src="logo.svg" alt="네스트리빙케어 로고" class="mx-auto w-16 h-16 mb-4" width="64" height="64" />
+  <section class="text-left py-12 px-6 md:px-12 hero-section" role="main">
+    <img src="logo.svg" alt="네스트리빙케어 로고" class="w-16 h-16 mb-4" width="64" height="64" />
     <h1 class="text-3xl font-bold mb-4"><span class="hero-title">청소와 공간 케어의 모든 것,</span><br><span class="hero-title">네스트리빙케어</span></h1>
     <div class="mt-4">
       <button class="contact-btn px-6 py-2 rounded" type="button" aria-label="문의하기 버튼">문의하기</button>
