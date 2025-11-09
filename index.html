@@ -522,7 +522,7 @@
       <div class="rounded text-center service-btn service-btn-with-image cursor-pointer transition flex items-end justify-center relative overflow-hidden" style="background-image: url('images/homecleaning.jpeg'); background-size: cover; background-position: center;" role="listitem"><a href="homecleaning.html" class="block w-full h-full flex items-end justify-center pb-4 relative z-10 text-white font-bold text-lg" aria-label="홈클리닝 서비스">홈클리닝</a></div>
       <div class="rounded text-center service-btn service-btn-with-image cursor-pointer transition flex items-end justify-center relative overflow-hidden" style="background-image: url('images/commercialcleaning.jpeg'); background-size: cover; background-position: center;" role="listitem"><a href="#services" class="block w-full h-full flex items-end justify-center pb-4 relative z-10 text-white font-bold text-lg" aria-label="사업장클리닝 서비스">사업장클리닝</a></div>
       <div class="rounded text-center service-btn service-btn-with-image cursor-pointer transition flex items-end justify-center relative overflow-hidden" role="listitem"><a href="#services" class="block w-full h-full flex items-end justify-center pb-4 relative z-10 text-white font-bold text-lg" aria-label="특수클리닝 서비스">특수클리닝</a></div>
-      <div class="rounded text-center service-btn service-btn-with-image cursor-pointer transition flex items-end justify-center relative overflow-hidden" role="listitem"><a href="#services" class="block w-full h-full flex items-end justify-center pb-4 relative z-10 text-white font-bold text-lg" aria-label="부가서비스">부가서비스</a></div>
+      <div class="rounded text-center service-btn service-btn-with-image cursor-pointer transition flex items-end justify-center relative overflow-hidden" style="background-image: url('images/SBS_care.png'); background-size: cover; background-position: center;" role="listitem"><a href="#services" class="block w-full h-full flex items-end justify-center pb-4 relative z-10 text-white font-bold text-lg" aria-label="부가서비스">부가서비스</a></div>
     </div>
   </section>
 
@@ -553,18 +553,9 @@
     <!-- 블로그(노트 스타일) -->
     <div class="md:w-1/2 w-full">
       <h3 class="text-2xl font-semibold mb-6">블로그</h3>
-      <ul class="divide-y divide-mint-200 bg-transparent">
+      <ul id="blog-list" class="divide-y divide-mint-200 bg-transparent">
         <li class="py-5">
-          <h4 class="font-semibold mb-1">입주청소 꿀팁</h4>
-          <p class="text-gray-600 text-sm">입주 전 반드시 체크해야 할 청소 리스트 정리</p>
-        </li>
-        <li class="py-5">
-          <h4 class="font-semibold mb-1">줄눈시공 관리법</h4>
-          <p class="text-gray-600 text-sm">줄눈 시공 후 유지 관리를 위한 핵심 노하우</p>
-        </li>
-        <li class="py-5">
-          <h4 class="font-semibold mb-1">새집증후군 제거 방법</h4>
-          <p class="text-gray-600 text-sm">천연 제품을 활용한 실내 공기 케어 가이드</p>
+          <p class="text-gray-600 text-sm">블로그 글을 불러오는 중...</p>
         </li>
       </ul>
     </div>
@@ -648,6 +639,55 @@
             hcDrop.style.display = 'none';
           }
         });
+      }
+
+      // 네이버 블로그 RSS 피드 가져오기
+      const blogList = document.getElementById('blog-list');
+      if (blogList) {
+        // CORS 프록시를 사용하여 RSS 피드 가져오기
+        const rssUrl = 'https://rss.blog.naver.com/nestlivingcare.xml';
+        const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(rssUrl);
+        
+        fetch(proxyUrl)
+          .then(response => response.text())
+          .then(data => {
+            // XML 파싱
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(data, 'text/xml');
+            const items = xmlDoc.querySelectorAll('item');
+            
+            if (items.length > 0) {
+              blogList.innerHTML = '';
+              // 최신 3개 글만 표시
+              const maxItems = Math.min(3, items.length);
+              
+              for (let i = 0; i < maxItems; i++) {
+                const item = items[i];
+                const title = item.querySelector('title')?.textContent || '제목 없음';
+                const description = item.querySelector('description')?.textContent || '';
+                const link = item.querySelector('link')?.textContent || 'https://blog.naver.com/nestlivingcare';
+                
+                // HTML 태그 제거
+                const cleanDescription = description.replace(/<[^>]*>/g, '').substring(0, 80) + '...';
+                
+                const li = document.createElement('li');
+                li.className = 'py-5';
+                li.innerHTML = `
+                  <a href="${link}" target="_blank" rel="noopener noreferrer" class="block hover:opacity-80 transition-opacity">
+                    <h4 class="font-semibold mb-1">${title}</h4>
+                    <p class="text-gray-600 text-sm">${cleanDescription}</p>
+                  </a>
+                `;
+                blogList.appendChild(li);
+              }
+            } else {
+              blogList.innerHTML = '<li class="py-5"><p class="text-gray-600 text-sm">블로그 글을 불러올 수 없습니다.</p></li>';
+            }
+          })
+          .catch(error => {
+            console.error('블로그 RSS 피드 로드 오류:', error);
+            blogList.innerHTML = '<li class="py-5"><p class="text-gray-600 text-sm">블로그 글을 불러오는 중 오류가 발생했습니다.</p></li>';
+          });
       }
     });
   </script>
