@@ -152,6 +152,8 @@
       border: 1px solid rgba(255, 255, 255, 0.8);
       box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2), inset 0 4px 20px rgba(255, 255, 255, 0.3);
       transition: backdrop-filter 0.3s, -webkit-backdrop-filter 0.3s, box-shadow 0.3s, background 0.3s;
+      width: 354px;
+      height: 215px;
     }
     .service-btn-with-image[style*="background-image"] {
       background: transparent;
@@ -403,6 +405,37 @@
         height: 1.75rem;
       }
     }
+    /* 모바일 반응형 - 서비스 버튼 */
+    @media screen and (max-width: 768px) {
+      .service-btn-with-image {
+        width: 100% !important;
+        max-width: 100%;
+        height: 140px !important;
+      }
+      #services {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+      #services .grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+      }
+      .service-btn-with-image > a {
+        font-size: 1rem !important;
+        padding-bottom: 0.75rem !important;
+      }
+    }
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+      .service-btn-with-image {
+        width: 100% !important;
+        max-width: 100%;
+        height: 180px !important;
+      }
+      #services .grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem;
+      }
+    }
     /* 데스크톱에서만 변경 */
     @media screen and (min-width: 1025px) {
       .hamburger-btn {
@@ -485,11 +518,11 @@
   <!-- 서비스 소개 -->
   <section id="services" class="px-6 py-12" aria-labelledby="services-heading">
     <h2 id="services-heading" class="text-2xl font-semibold mb-6">서비스 소개</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" role="list">
-      <div class="rounded text-center service-btn service-btn-with-image cursor-pointer transition flex items-end justify-center relative overflow-hidden" style="width: 354px; height: 215px; background-image: url('images/homecleaning.jpeg'); background-size: cover; background-position: center;" role="listitem"><a href="homecleaning.html" class="block w-full h-full flex items-end justify-center pb-4 relative z-10 text-white font-bold text-lg" aria-label="홈클리닝 서비스">홈클리닝</a></div>
-      <div class="rounded text-center service-btn service-btn-with-image cursor-pointer transition flex items-end justify-center relative overflow-hidden" style="width: 354px; height: 215px; background-image: url('images/commercialcleaning.jpeg'); background-size: cover; background-position: center;" role="listitem"><a href="#services" class="block w-full h-full flex items-end justify-center pb-4 relative z-10 text-white font-bold text-lg" aria-label="사업장클리닝 서비스">사업장클리닝</a></div>
-      <div class="rounded text-center service-btn service-btn-with-image cursor-pointer transition flex items-end justify-center relative overflow-hidden" style="width: 354px; height: 215px;" role="listitem"><a href="#services" class="block w-full h-full flex items-end justify-center pb-4 relative z-10 text-white font-bold text-lg" aria-label="특수클리닝 서비스">특수클리닝</a></div>
-      <div class="rounded text-center service-btn service-btn-with-image cursor-pointer transition flex items-end justify-center relative overflow-hidden" style="width: 354px; height: 215px;" role="listitem"><a href="#services" class="block w-full h-full flex items-end justify-center pb-4 relative z-10 text-white font-bold text-lg" aria-label="부가서비스">부가서비스</a></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" role="list">
+      <div class="rounded text-center service-btn service-btn-with-image cursor-pointer transition flex items-end justify-center relative overflow-hidden" style="background-image: url('images/homecleaning.jpeg'); background-size: cover; background-position: center;" role="listitem"><a href="homecleaning.html" class="block w-full h-full flex items-end justify-center pb-4 relative z-10 text-white font-bold text-lg" aria-label="홈클리닝 서비스">홈클리닝</a></div>
+      <div class="rounded text-center service-btn service-btn-with-image cursor-pointer transition flex items-end justify-center relative overflow-hidden" style="background-image: url('images/commercialcleaning.jpeg'); background-size: cover; background-position: center;" role="listitem"><a href="#services" class="block w-full h-full flex items-end justify-center pb-4 relative z-10 text-white font-bold text-lg" aria-label="사업장클리닝 서비스">사업장클리닝</a></div>
+      <div class="rounded text-center service-btn service-btn-with-image cursor-pointer transition flex items-end justify-center relative overflow-hidden" role="listitem"><a href="#services" class="block w-full h-full flex items-end justify-center pb-4 relative z-10 text-white font-bold text-lg" aria-label="특수클리닝 서비스">특수클리닝</a></div>
+      <div class="rounded text-center service-btn service-btn-with-image cursor-pointer transition flex items-end justify-center relative overflow-hidden" role="listitem"><a href="#services" class="block w-full h-full flex items-end justify-center pb-4 relative z-10 text-white font-bold text-lg" aria-label="부가서비스">부가서비스</a></div>
     </div>
   </section>
 
