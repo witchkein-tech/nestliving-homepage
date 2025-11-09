@@ -253,6 +253,291 @@
         display: block;
       }
     }
+    /* 병원 섹션 배경 이미지 */
+    .hospital-section {
+      position: relative;
+      background-image: url('images/hospital.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      border-radius: 1rem;
+      backdrop-filter: blur(10px) saturate(180%);
+      -webkit-backdrop-filter: blur(10px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2), inset 0 4px 20px rgba(255, 255, 255, 0.3);
+      transition: backdrop-filter 0.3s, -webkit-backdrop-filter 0.3s, box-shadow 0.3s;
+      margin-bottom: 3rem;
+    }
+    .hospital-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: transparent;
+      z-index: 0;
+      transition: opacity 0.3s ease;
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
+      opacity: 0;
+    }
+    .hospital-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse 500px 500px at top left, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 30%, transparent 60%),
+        radial-gradient(ellipse 500px 500px at top right, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 30%, transparent 60%),
+        radial-gradient(ellipse 500px 500px at bottom left, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 30%, transparent 60%),
+        radial-gradient(ellipse 500px 500px at bottom right, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 30%, transparent 60%);
+      z-index: 1;
+      pointer-events: none;
+      transition: opacity 0.3s ease, backdrop-filter 0.3s, filter 0.3s;
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
+      filter: brightness(115%);
+      opacity: 0.1;
+    }
+    .hospital-section:hover {
+      backdrop-filter: blur(3px) saturate(180%);
+      -webkit-backdrop-filter: blur(3px) saturate(180%);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2), inset 0 4px 20px rgba(255, 255, 255, 0.3), 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+    }
+    .hospital-section:hover::before {
+      opacity: 0.3;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+    .hospital-section:hover::after {
+      opacity: 0.2;
+      background: rgba(255, 255, 255, 0.1);
+      filter: brightness(120%);
+    }
+    .hospital-section > * {
+      position: relative;
+      z-index: 2;
+    }
+    .hospital-section h3,
+    .hospital-section p,
+    .hospital-section li,
+    .hospital-section blockquote {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 8px rgba(0, 0, 0, 0.4);
+      color: #ffffff;
+      transition: text-shadow 0.3s ease;
+    }
+    .hospital-section:hover h3,
+    .hospital-section:hover p,
+    .hospital-section:hover li,
+    .hospital-section:hover blockquote {
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.5);
+    }
+    /* 사무실 섹션 배경 이미지 */
+    .office-section {
+      position: relative;
+      background-image: url('images/office.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      border-radius: 1rem;
+      backdrop-filter: blur(10px) saturate(180%);
+      -webkit-backdrop-filter: blur(10px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2), inset 0 4px 20px rgba(255, 255, 255, 0.3);
+      transition: backdrop-filter 0.3s, -webkit-backdrop-filter 0.3s, box-shadow 0.3s;
+      margin-bottom: 3rem;
+    }
+    .office-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: transparent;
+      z-index: 0;
+      transition: opacity 0.3s ease;
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
+      opacity: 0;
+    }
+    .office-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse 500px 500px at top left, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 30%, transparent 60%),
+        radial-gradient(ellipse 500px 500px at top right, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 30%, transparent 60%),
+        radial-gradient(ellipse 500px 500px at bottom left, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 30%, transparent 60%),
+        radial-gradient(ellipse 500px 500px at bottom right, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 30%, transparent 60%);
+      z-index: 1;
+      pointer-events: none;
+      transition: opacity 0.3s ease, backdrop-filter 0.3s, filter 0.3s;
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
+      filter: brightness(115%);
+      opacity: 0.1;
+    }
+    .office-section:hover {
+      backdrop-filter: blur(3px) saturate(180%);
+      -webkit-backdrop-filter: blur(3px) saturate(180%);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2), inset 0 4px 20px rgba(255, 255, 255, 0.3), 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+    }
+    .office-section:hover::before {
+      opacity: 0.3;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+    .office-section:hover::after {
+      opacity: 0.2;
+      background: rgba(255, 255, 255, 0.1);
+      filter: brightness(120%);
+    }
+    .office-section > * {
+      position: relative;
+      z-index: 2;
+    }
+    .office-section h3,
+    .office-section p,
+    .office-section li,
+    .office-section blockquote {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 8px rgba(0, 0, 0, 0.4);
+      color: #ffffff;
+      transition: text-shadow 0.3s ease;
+    }
+    .office-section:hover h3,
+    .office-section:hover p,
+    .office-section:hover li,
+    .office-section:hover blockquote {
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.5);
+    }
+    /* 식당 섹션 배경 이미지 */
+    .cafe-section {
+      position: relative;
+      background-image: url('images/cafe.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      border-radius: 1rem;
+      backdrop-filter: blur(10px) saturate(180%);
+      -webkit-backdrop-filter: blur(10px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2), inset 0 4px 20px rgba(255, 255, 255, 0.3);
+      transition: backdrop-filter 0.3s, -webkit-backdrop-filter 0.3s, box-shadow 0.3s;
+      margin-bottom: 3rem;
+    }
+    .cafe-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: transparent;
+      z-index: 0;
+      transition: opacity 0.3s ease;
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
+      opacity: 0;
+    }
+    .cafe-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse 500px 500px at top left, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 30%, transparent 60%),
+        radial-gradient(ellipse 500px 500px at top right, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 30%, transparent 60%),
+        radial-gradient(ellipse 500px 500px at bottom left, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 30%, transparent 60%),
+        radial-gradient(ellipse 500px 500px at bottom right, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 30%, transparent 60%);
+      z-index: 1;
+      pointer-events: none;
+      transition: opacity 0.3s ease, backdrop-filter 0.3s, filter 0.3s;
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
+      filter: brightness(115%);
+      opacity: 0.1;
+    }
+    .cafe-section:hover {
+      backdrop-filter: blur(3px) saturate(180%);
+      -webkit-backdrop-filter: blur(3px) saturate(180%);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2), inset 0 4px 20px rgba(255, 255, 255, 0.3), 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+    }
+    .cafe-section:hover::before {
+      opacity: 0.3;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+    .cafe-section:hover::after {
+      opacity: 0.2;
+      background: rgba(255, 255, 255, 0.1);
+      filter: brightness(120%);
+    }
+    .cafe-section > * {
+      position: relative;
+      z-index: 2;
+    }
+    .cafe-section h3,
+    .cafe-section p,
+    .cafe-section li,
+    .cafe-section blockquote {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 8px rgba(0, 0, 0, 0.4);
+      color: #ffffff;
+      transition: text-shadow 0.3s ease;
+    }
+    .cafe-section:hover h3,
+    .cafe-section:hover p,
+    .cafe-section:hover li,
+    .cafe-section:hover blockquote {
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 0, 0, 0.5);
+    }
+    /* 제목 빛 효과 */
+    .title-shine {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+    }
+    .title-shine::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -100%;
+      width: 50%;
+      height: 200%;
+      background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 45%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.4) 55%,
+        transparent 100%
+      );
+      transform: skewX(-25deg);
+      animation: shine 3s infinite;
+      z-index: 1;
+    }
+    @keyframes shine {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 200%;
+      }
+    }
   </style>
 </head>
 <body style="background: radial-gradient(circle, rgba(131, 221, 188, 0.5), rgba(242, 253, 247, 1)); font-family: 'NanumBarunGothic', sans-serif;" class="text-gray-800 min-h-screen">
@@ -306,7 +591,7 @@
     <section class="text-gray-800 font-['NanumBarunGothic',sans-serif]">
       <!-- Hero -->
       <div class="max-w-6xl mx-auto px-6 py-20 text-center border-b border-gray-100">
-        <h2 class="text-3xl font-bold mb-4 text-[#7BC4BB]">사업장청소 서비스</h2>
+        <h2 class="text-3xl font-bold mb-4 text-[#7BC4BB]"><span class="title-shine">사업장청소 서비스</span></h2>
         <p class="text-xl font-medium leading-relaxed">
           병원·사무실·식음업장 등 고객이 머무는 모든 공간,<br />
           <span class="text-[#7BC4BB] font-semibold">위생이 곧 신뢰의 기준</span>입니다.<br />
@@ -316,7 +601,7 @@
       </div>
 
       <!-- 병원 -->
-      <div class="max-w-5xl mx-auto px-6 py-16">
+      <div class="max-w-5xl mx-auto px-6 py-16 hospital-section">
         <h3 class="text-2xl font-bold text-[#7BC4BB] mb-2">병원·의료시설 청소</h3>
         <p class="font-semibold mb-4">환자 신뢰를 지키는 위생관리, 의료공간 전문팀이 책임집니다.</p>
         <ul class="list-disc pl-6 leading-relaxed mb-4">
@@ -331,8 +616,8 @@
       </div>
 
       <!-- 사무실 -->
-      <div class="max-w-5xl mx-auto px-6 py-16 bg-gray-50 rounded-2xl">
-        <h3 class="text-2xl font-bold text-[#7BC4BB] mb-2">사무실·오피스 청소</h3>
+      <div class="max-w-5xl mx-auto px-6 py-16 office-section">
+        <h3 class="text-2xl font-bold mb-2">사무실·오피스 청소</h3>
         <p class="font-semibold mb-4">깨끗한 사무실이 곧 기업의 첫인상입니다.</p>
         <ul class="list-disc pl-6 leading-relaxed mb-4">
           <li>업무 효율을 높이는 <strong>먼지·공기질 개선 청소</strong></li>
@@ -340,14 +625,14 @@
           <li>정기/야간/휴무일 청소로 <strong>업무 방해 없는 스케줄 운영</strong></li>
           <li>은은한 향기 관리로 <strong>브랜드 이미지 향상</strong></li>
         </ul>
-        <blockquote class="border-l-4 border-[#7BC4BB] pl-4 text-gray-600">
+        <blockquote class="border-l-4 border-[#7BC4BB] pl-4">
           직원이 머무는 시간만큼, 공간의 위생도 함께 관리하세요.
         </blockquote>
       </div>
 
       <!-- 식당 -->
-      <div class="max-w-5xl mx-auto px-6 py-16">
-        <h3 class="text-2xl font-bold text-[#7BC4BB] mb-2">식당·대형카페 청소</h3>
+      <div class="max-w-5xl mx-auto px-6 py-16 cafe-section">
+        <h3 class="text-2xl font-bold mb-2">식당·대형카페 청소</h3>
         <p class="font-semibold mb-4">청결이 맛보다 먼저 기억되는 공간, 전문가의 손길로 완성합니다.</p>
         <ul class="list-disc pl-6 leading-relaxed mb-4">
           <li>홀·주방·화장실 구역별 위생관리 시스템</li>
@@ -355,7 +640,7 @@
           <li>냄새·기름때 제거 및 환기·탈취관리 포함</li>
           <li>영업시간 외 작업으로 <strong>운영 방해 없는 청소</strong></li>
         </ul>
-        <blockquote class="border-l-4 border-[#7BC4BB] pl-4 text-gray-600">
+        <blockquote class="border-l-4 border-[#7BC4BB] pl-4">
           고객이 머무는 시간 동안 쾌적함이 유지되도록, 보이지 않는 위생까지 관리합니다.
         </blockquote>
       </div>
@@ -383,9 +668,7 @@
       <div class="text-center py-20">
         <h3 class="text-2xl font-bold mb-4 text-[#7BC4BB]">무료 현장진단 예약</h3>
         <p class="text-lg mb-8">귀사의 공간에 딱 맞는 위생관리 솔루션을 제안드립니다.<br />지금 바로 상담받아보세요. (평일 오전 9시~오후 18시, 주말/공휴일 제외)</p>
-        <a href="https://talk.naver.com/profile/wp3ujeu" target="_blank" rel="noopener noreferrer" class="bg-[#7BC4BB] text-white font-semibold px-10 py-4 rounded-full hover:bg-[#66B2A9] transition inline-block">
-          무료 현장진단 신청
-        </a>
+        <a href="https://talk.naver.com/profile/wp3ujeu" target="_blank" rel="noopener noreferrer" class="contact-btn px-8 py-3 rounded text-lg font-semibold inline-block text-center" aria-label="무료 현장진단 신청 버튼">무료 현장진단 신청</a>
       </div>
     </section>
   </main>
