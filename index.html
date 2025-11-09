@@ -105,6 +105,39 @@
   }
   </script>
   <style>
+    /* 히어로 섹션 빛 효과 */
+    .hero-title {
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+    }
+    .hero-title::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -100%;
+      width: 50%;
+      height: 200%;
+      background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.4) 45%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.4) 55%,
+        transparent 100%
+      );
+      transform: skewX(-25deg);
+      animation: shine 3s infinite;
+      z-index: 1;
+    }
+    @keyframes shine {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 200%;
+      }
+    }
     .service-btn {
       position: relative;
       overflow: hidden;
@@ -471,7 +504,6 @@
         <li><a href="#services" class="menu-link transition-colors">사업장클리닝</a></li>
         <li><a href="#services" class="menu-link transition-colors">특수클리닝</a></li>
         <li><a href="#services" class="menu-link transition-colors">부가서비스</a></li>
-        <li><a href="board.html" class="menu-link transition-colors">게시판</a></li>
         <li><a href="#faq" class="menu-link transition-colors">문의사항</a></li>
       </ul>
       <!-- 가로 드롭다운: 홈클리닝 클릭 시 표시 -->
@@ -501,7 +533,6 @@
       <a href="#services" class="mobile-menu-item">사업장클리닝</a>
       <a href="#services" class="mobile-menu-item">특수클리닝</a>
       <a href="#services" class="mobile-menu-item">부가서비스</a>
-      <a href="board.html" class="mobile-menu-item">게시판</a>
       <a href="#faq" class="mobile-menu-item">문의사항</a>
     </div>
   </div>
@@ -509,7 +540,7 @@
   <!-- 메인 비주얼 -->
   <section class="text-center py-12 bg-mint-100" role="main">
     <img src="logo.svg" alt="네스트리빙케어 로고" class="mx-auto w-16 h-16 mb-4" width="64" height="64" />
-    <h1 class="text-3xl font-bold mb-4">청소와 공간 케어의 모든 것,<br>네스트리빙케어</h1>
+    <h1 class="text-3xl font-bold mb-4"><span class="hero-title">청소와 공간 케어의 모든 것,</span><br><span class="hero-title">네스트리빙케어</span></h1>
     <div class="mt-4">
       <button class="contact-btn px-6 py-2 rounded" type="button" aria-label="문의하기 버튼">문의하기</button>
     </div>
