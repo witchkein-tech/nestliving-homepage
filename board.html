@@ -8,8 +8,184 @@
   <link href="https://cdn.jsdelivr.net/gh/webfontworld/naver/NanumBarunGothic.css" rel="stylesheet">
   <style>
     body { font-family: 'NanumBarunGothic', sans-serif; }
-    .menu-link { color: #222; font-weight: 500; background: none!important; border: none!important; filter: none!important; transition: color 0.2s; }
-    .menu-link:hover { color: #e55c31 !important; }
+    .menu-link {
+      background: none !important;
+      border: none !important;
+      filter: none !important;
+      box-shadow: none !important;
+      color: #222;
+      border-radius: 0;
+      padding: 0;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+    .menu-link:hover {
+      color: rgba(131,221,188,1) !important;
+      background: none !important;
+    }
+    .mobile-menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 50;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .mobile-menu-overlay.active {
+      display: block;
+    }
+    .mobile-menu {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      width: 90%;
+      max-width: 400px;
+      background: white;
+      z-index: 51;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    }
+    .mobile-menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .mobile-menu-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, #e4f7f5 0%, #7bc4bb 100%);
+    }
+    .mobile-menu-header h3 {
+      color: #222;
+      margin: 0;
+    }
+    .mobile-menu-content {
+      padding: 0.5rem 0;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+    .mobile-menu-item {
+      display: block;
+      padding: 1.25rem 1.5rem;
+      color: #222;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      border-bottom: 1px solid #f3f4f6;
+      transition: background 0.2s, color 0.2s;
+      text-align: center;
+    }
+    .mobile-menu-item:last-child {
+      border-bottom: none;
+    }
+    .mobile-menu-item:active,
+    .mobile-menu-item:hover {
+      background: #f9fafb;
+      color: rgba(131,221,188,1);
+    }
+    .close-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+    .close-btn:active {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    .close-btn span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #222;
+      position: absolute;
+      transition: all 0.3s;
+    }
+    .close-btn span:nth-child(1) {
+      transform: rotate(45deg);
+    }
+    .close-btn span:nth-child(2) {
+      transform: rotate(-45deg);
+    }
+    /* 모바일 우선: 기본값은 모바일 스타일 */
+    .hamburger-btn {
+      display: flex;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 10;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .desktop-nav {
+      display: none;
+    }
+    .hamburger-btn span {
+      display: block;
+      width: 24px;
+      height: 3px;
+      background: #222;
+      transition: all 0.3s;
+      border-radius: 2px;
+    }
+    .hamburger-btn.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+    .hamburger-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger-btn.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    /* 모바일 스타일 */
+    @media screen and (max-width: 1024px) {
+      .desktop-nav {
+        display: none;
+      }
+      .hamburger-btn {
+        display: flex;
+      }
+      .company-name {
+        font-size: 1rem;
+        white-space: nowrap;
+      }
+      .logo-container {
+        gap: 0.5rem;
+      }
+      .logo-container img {
+        width: 1.75rem;
+        height: 1.75rem;
+      }
+    }
+    /* 데스크톱에서만 변경 */
+    @media screen and (min-width: 1025px) {
+      .hamburger-btn {
+        display: none;
+      }
+      .desktop-nav {
+        display: block;
+      }
+    }
     .glass { position: relative; overflow: hidden; background: rgba(255, 255, 255, 0.23); border: 1.6px solid rgba(255,255,255,0.24); box-shadow: 0 3px 14px rgba(0,0,0,0.09); backdrop-filter: blur(10px); border-radius: 2rem; }
     .glass::before { content: ""; pointer-events: none; position: absolute; top: -60%; left: -60%; width: 220%; height: 220%; background: linear-gradient(120deg, rgba(240,250,255,0.14) 50%, rgba(123,196,187,0.22), rgba(229,92,49,0.09), rgba(139,92,246,0.10) 100%); opacity: 0.45; z-index: 0; filter: blur(3px) saturate(1.08); border-radius: 2rem; }
     .glass > * { position: relative; z-index: 1; }
@@ -23,23 +199,53 @@
 </head>
 <body style="background: linear-gradient(to bottom, #e4f7f5 0%, #7bc4bb 100%);">
   <!-- 상단 네비 -->
-  <header class="flex items-center justify-between px-6 py-4 bg-mint-200">
-    <div class="flex items-center gap-2">
-      <a href="index.html"><img src="logo.svg" alt="로고" class="w-8 h-8" /></a>
-      <a href="index.html" class="text-xl font-bold">네스트리빙케어</a>
+  <header class="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 bg-mint-200" role="banner">
+    <div class="flex items-center gap-2 logo-container">
+      <a href="index.html" aria-label="네스트리빙케어 홈페이지"><img src="logo.svg" alt="네스트리빙케어 로고" class="w-7 h-7 md:w-8 md:h-8" width="32" height="32" /></a>
+      <a href="index.html" class="text-base md:text-xl font-bold company-name" aria-label="네스트리빙케어 홈">네스트리빙케어</a>
     </div>
-    <nav>
-      <ul class="flex gap-5 text-base font-medium">
+    <!-- 햄버거 메뉴 버튼 (모바일) -->
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="메뉴 열기" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <!-- 데스크톱 네비게이션 -->
+    <nav class="desktop-nav" role="navigation" aria-label="주요 메뉴">
+      <ul class="flex gap-5 text-base font-medium relative">
         <li><a href="index.html#about" class="menu-link transition-colors">회사소개</a></li>
         <li><a href="homecleaning.html" class="menu-link transition-colors">홈클리닝</a></li>
         <li><a href="index.html#services" class="menu-link transition-colors">사업장클리닝</a></li>
         <li><a href="index.html#services" class="menu-link transition-colors">특수클리닝</a></li>
         <li><a href="index.html#services" class="menu-link transition-colors">부가서비스</a></li>
-        <li><a href="board.html" class="menu-link transition-colors text-primary">게시판</a></li>
+        <li><a href="board.html" class="menu-link transition-colors">게시판</a></li>
         <li><a href="index.html#faq" class="menu-link transition-colors">문의사항</a></li>
       </ul>
     </nav>
   </header>
+
+  <!-- 모바일 메뉴 오버레이 -->
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+  
+  <!-- 모바일 오버레이 메뉴 -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-header">
+      <h3 class="text-lg font-bold">메뉴</h3>
+      <button class="close-btn" id="close-menu-btn" aria-label="메뉴 닫기">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="mobile-menu-content">
+      <a href="index.html#about" class="mobile-menu-item">회사소개</a>
+      <a href="homecleaning.html" class="mobile-menu-item">홈클리닝</a>
+      <a href="index.html#services" class="mobile-menu-item">사업장클리닝</a>
+      <a href="index.html#services" class="mobile-menu-item">특수클리닝</a>
+      <a href="index.html#services" class="mobile-menu-item">부가서비스</a>
+      <a href="board.html" class="mobile-menu-item">게시판</a>
+      <a href="index.html#faq" class="mobile-menu-item">문의사항</a>
+    </div>
+  </div>
   <!-- 메인 컨텐츠 -->
   <main class="flex flex-col md:flex-row gap-7 max-w-6xl mx-auto px-6 py-10">
     <!-- 좌측 사이드 -->
@@ -70,5 +276,43 @@
       </ul>
     </section>
   </main>
+  <script>
+    // DOM 로드 후 실행
+    document.addEventListener('DOMContentLoaded', function() {
+      // 모바일 메뉴 토글
+      const hamburgerBtn = document.getElementById('hamburger-btn');
+      const closeMenuBtn = document.getElementById('close-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+      if (hamburgerBtn && closeMenuBtn && mobileMenu && mobileMenuOverlay) {
+        function openMobileMenu() {
+          mobileMenu.classList.add('active');
+          mobileMenuOverlay.classList.add('active');
+          hamburgerBtn.classList.add('active');
+          hamburgerBtn.setAttribute('aria-expanded', 'true');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+          mobileMenu.classList.remove('active');
+          mobileMenuOverlay.classList.remove('active');
+          hamburgerBtn.classList.remove('active');
+          hamburgerBtn.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+
+        hamburgerBtn.addEventListener('click', openMobileMenu);
+        closeMenuBtn.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        // 모바일 메뉴 아이템 클릭 시 메뉴 닫기
+        const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
+        mobileMenuItems.forEach(item => {
+          item.addEventListener('click', closeMobileMenu);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
