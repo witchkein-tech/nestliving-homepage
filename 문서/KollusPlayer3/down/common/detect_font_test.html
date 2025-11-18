@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Kollus Player V3 Detect Font Test</title>
+		<meta name="description" content="" />
+		<meta name="author" content="Catenoid.inc" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<script src="js/lib/jquery-1.9.1.min.js"></script>
+
+		<style>
+			body {
+				margin: 10px;
+			}
+
+			h2 {
+				font-size: 12px;
+				margin-top:0px;
+				margin-bottom:40px;
+			}
+
+			h3 {
+				font-size: 12px;
+				color: #666;
+				margin-bottom: 0px;
+			}
+
+			#testFontDisplay, #installedFontDisplay{
+				background-color: #ccc;
+			}
+
+			#fontTestResult {
+				margin-top:30px;
+			}
+			#fontTestResult.result-true span {
+				color: blue;
+			}
+			#fontTestResult.result-false span {
+				color: red;
+			}
+		</style>
+
+		<script>
+			$(document).ready(function() {
+
+				var detectFont = (function() {
+				    var test_string = 'abcdefghijklmnopqrstuvwxyz';
+				    var test_display = null;
+
+				    var testFontWidth = 0;
+				    var testFontHeight = 0;
+				    var installedFontWidth = 0;
+				    var installedFontHeight = 0;
+				    var guid = 0;
+				    
+				    return {
+				        // must be called when the dom is ready
+				        setup : function () {
+				            if ($('#testFont').length) return;
+
+				            $('head').append('<' + 'style> #testFont {font-size: 50px!important; font-family: "";}</' + 'style>');
+				            $('#testFontDisplay').append('<span id="testFont" class="fonttest">' + test_string + '</span>');
+				            
+				            testFontWidth = $('#testFontDisplay').find("span").width();
+				            testFontHeight = $('#testFontDisplay').find("span").height();
+				        },
+				        
+				        isInstalled : function(font) {
+				            guid++;
+				        
+				            var style = '<' + 'style id="installedFontStyle"> #installedFont' + guid + ' {font-size: 50px!important; font-family: ' + font + ' } <' + '/style>';
+				            
+				            $('head').find('#installedFontStyle').remove().end().append(style);
+				            $('#installedFontDisplay').append('<span id="installedFont' + guid + '" class="fonttest">' + test_string + '</span>');
+
+				            installedFontWidth = $('#installedFontDisplay').find("span").width();
+				            installedFontHeight = $('#installedFontDisplay').find("span").height();
+
+				            $('#testFontWidth').text("(width : " + testFontWidth + ", height : " + testFontHeight + ")");
+				            $('#installedFontWidth').text("(width : " + installedFontWidth + ", height : " + installedFontHeight + ")");
+				                        
+				            return ((testFontWidth != installedFontWidth) || (testFontHeight !== installedFontHeight));
+				        }
+				    };
+				})();
+
+				detectFont.setup();
+
+				var detectFoneResult = detectFont.isInstalled('"V3Detect"');
+				$('#fontTestResult').addClass("result-" + detectFoneResult);
+
+
+       			$('#fontTestResult').html("Kollus Player V3 is Installed : <span>" + detectFoneResult + "</span>");
+			});
+		</script>
+	</head>
+	
+	<body>
+		<h4>Font Detect Test</h4>
+		<h2><a href="font/V3Detect.ttf.zip" target="_blank">Download Font File (V3Detect.ttf.zip)</a></h2>
+		<h3>testFont <span id='testFontWidth'></span></h3>
+		<div id="testFontDisplay"></div>
+		<h3>installedFont <span id='installedFontWidth'></span></h3>
+		<div id="installedFontDisplay"></div>
+		<div id="fontTestResult"></div>
+	</body>
+</html>

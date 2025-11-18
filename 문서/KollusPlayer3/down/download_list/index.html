@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Kollus Player V3 Download List</title>
+		<meta name="description" content="" />
+		<meta name="author" content="Catenoid.inc" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="stylesheet" href="css/download-list.3.0.18.min.css?_bust=119">
+		<script src="../common/js/lib/jquery-1.12.4.min.js"></script>
+		<script src="../common/js/lib/jquery.xdomainrequest.min.js"></script>
+		<script src="../common/js/lib/TweenMax.min.js"></script>
+		<script src="../common/js/lib/moment.min.js"></script>
+		<script src="../common/js/lib/platform.min.js"></script>
+		<script src="../common/js/lib/jquery.tooltip.js"></script>
+		<script src="../common/js/configuration.js"></script>
+		<script src="../common/js/language-pack.js"></script>
+		<script src="../common/js/agentcheck.min.js"></script>
+		<script src="js/download-list.3.0.18.min.js?_bust=119"></script>
+	</head>
+	<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+		<div id="player"><iframe id="player-frame" class="player-frame" allowfullscreen></iframe></div>
+		<div id="dcl_wrapper"></div>
+		<script>
+			var download_list = Modules.get('com.kollus.kollusDownloadList', 'DownloadList');
+			//Options
+			download_list.Options({
+				//'playKollusPlayerForce': true, //전용플레이어 강제 실행여부 설정.
+    			//'listViewType': 'card', //ListViewType 설정 : card, table
+				//'rootFolderValue': '/sample/', //root 폴더 값
+				//'playerAutoPlay': false //player의 autoPlay여부 설정.
+    		});
+
+			//Download list 초기화를 시켜준다.
+			download_list.Initialize();
+		</script>
+	</body>
+</html>
