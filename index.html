@@ -155,6 +155,12 @@
       animation: slideRightToLeft 30s linear infinite;
       z-index: 0;
     }
+    /* 모바일에서 슬라이드 속도 빠르게 */
+    @media screen and (max-width: 768px) {
+      .hero-slide-container {
+        animation: slideRightToLeft 15s linear infinite;
+      }
+    }
     .hero-slide-image {
       width: 25%;
       height: 100%;
@@ -167,6 +173,18 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+    /* 첫 번째 이미지(cleaning1.png) - 양옆 빈 공간 없이, 얼굴이 잘리지 않도록 조정 */
+    .hero-slide-image:first-child img,
+    .hero-slide-image:nth-child(3) img {
+      object-fit: cover;
+      object-position: center center;
+    }
+    /* 두 번째 이미지(cleaning2.png) - 얼굴이 잘리지 않도록 조정 */
+    .hero-slide-image:nth-child(2) img,
+    .hero-slide-image:nth-child(4) img {
+      object-fit: cover;
+      object-position: center top;
     }
     @keyframes slideRightToLeft {
       0% {
