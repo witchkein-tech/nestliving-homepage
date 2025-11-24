@@ -38,7 +38,7 @@
   
   <!-- Stylesheets -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/gh/webfontworld/naver/NanumBarunGothic.css" rel="stylesheet">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
   
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -566,9 +566,36 @@
         display: block;
       }
     }
+    /* 블로그 로딩 애니메이션 */
+    .blog-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1rem;
+    }
+    .blog-loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(123, 196, 187, 0.2);
+      border-top-color: #7BC4BB;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    .blog-loading-text {
+      color: #7BC4BB;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
-<body style="background: linear-gradient(to bottom, rgba(242, 242, 242, 1), rgba(216, 233, 223, 1)); font-family: 'NanumBarunGothic', sans-serif;" class="text-gray-800">
+<body style="background: linear-gradient(to bottom, rgba(242, 242, 242, 1), rgba(216, 233, 223, 1)); font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;" class="text-gray-800">
   <!-- 상단 헤더 -->
   <header class="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 bg-mint-200" role="banner">
     <div class="flex items-center gap-2 logo-container">
@@ -773,8 +800,9 @@
         <a href="https://blog.naver.com/nestlivingcare" target="_blank" rel="noopener noreferrer" class="contact-btn px-6 py-2 rounded text-base font-semibold inline-block text-center">블로그</a>
       </div>
       <ul id="blog-list" class="divide-y divide-mint-200 bg-white rounded-2xl p-6 shadow-sm" style="border-radius: 1rem;">
-        <li class="py-5">
-          <p class="text-gray-600 text-sm">블로그 글을 불러오는 중...</p>
+        <li class="blog-loading">
+          <div class="blog-loading-spinner"></div>
+          <p class="blog-loading-text">블로그 글을 불러오는 중...</p>
         </li>
       </ul>
     </div>
@@ -863,6 +891,14 @@
       // 네이버 블로그 RSS 피드 가져오기
       const blogList = document.getElementById('blog-list');
       if (blogList) {
+        // 로딩 상태 표시 (이미 HTML에 있지만 명시적으로 설정)
+        blogList.innerHTML = `
+          <li class="blog-loading">
+            <div class="blog-loading-spinner"></div>
+            <p class="blog-loading-text">블로그 글을 불러오는 중...</p>
+          </li>
+        `;
+        
         // CORS 프록시를 사용하여 RSS 피드 가져오기
         const rssUrl = 'https://rss.blog.naver.com/nestlivingcare.xml';
         const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(rssUrl);
