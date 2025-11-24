@@ -75,11 +75,17 @@
     }
     .glass > * { position: relative; z-index: 1; }
     body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif; }
-    /* 페이지 좌우 여백 반응형 */
+    /* 페이지 좌우 여백 - 가운데 정렬 */
+    @media screen and (min-width: 1601px) {
+      body {
+        padding-left: 398px;
+        padding-right: 398px;
+      }
+    }
     @media screen and (max-width: 1600px) {
-      main {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+      body {
+        padding-left: 0;
+        padding-right: 0;
       }
     }
     .menu-link {
@@ -309,7 +315,7 @@
       <a href="https://talk.naver.com/profile/wp3ujeu" target="_blank" rel="noopener noreferrer" class="mobile-menu-item">문의사항</a>
     </div>
   </div>
-  <main class="px-6 py-14 md:py-16 max-w-5xl mx-auto" style="margin-left: 398px; margin-right: 398px;">
+  <main class="px-6 py-14 md:py-16 max-w-5xl mx-auto">
     <h2 class="text-3xl font-bold mb-12 text-center">부가서비스</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div class="glass shadow-lg rounded-2xl p-7 flex flex-col items-center text-center">
