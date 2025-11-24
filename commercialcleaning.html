@@ -75,6 +75,13 @@
     }
     .glass > * { position: relative; z-index: 1; }
     body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif; }
+    /* 페이지 좌우 여백 반응형 */
+    @media screen and (max-width: 1600px) {
+      main {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+    }
     .menu-link {
       background: none !important;
       border: none !important;
@@ -587,7 +594,7 @@
       <a href="https://talk.naver.com/profile/wp3ujeu" target="_blank" rel="noopener noreferrer" class="mobile-menu-item">문의사항</a>
     </div>
   </div>
-  <main>
+  <main style="margin-left: 398px; margin-right: 398px;">
     <section class="text-gray-800 font-['Pretendard',-apple-system,BlinkMacSystemFont,system-ui,Roboto,'Helvetica Neue','Segoe UI','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif]">
       <!-- Hero -->
       <div class="max-w-6xl mx-auto px-6 py-12 pb-8 text-center border-b border-gray-100">

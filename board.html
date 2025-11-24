@@ -8,6 +8,13 @@
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
   <style>
     body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif; }
+    /* 페이지 좌우 여백 반응형 */
+    @media screen and (max-width: 1600px) {
+      main {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+    }
     .menu-link {
       background: none !important;
       border: none !important;
@@ -247,7 +254,7 @@
     </div>
   </div>
   <!-- 메인 컨텐츠 -->
-  <main class="flex flex-col md:flex-row gap-7 max-w-6xl mx-auto px-6 py-10">
+  <main class="flex flex-col md:flex-row gap-7 max-w-6xl mx-auto px-6 py-10" style="margin-left: 398px; margin-right: 398px;">
     <!-- 좌측 사이드 -->
     <aside class="md:w-1/4 w-full mb-8 md:mb-0">
       <div class="glass p-5">

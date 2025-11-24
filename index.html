@@ -273,8 +273,9 @@
       border: 1px solid rgba(255, 255, 255, 0.8);
       box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2), inset 0 4px 20px rgba(255, 255, 255, 0.3);
       transition: backdrop-filter 0.3s, -webkit-backdrop-filter 0.3s, box-shadow 0.3s, background 0.3s;
-      width: 354px;
-      height: 215px;
+      width: 100%;
+      max-width: 450px;
+      height: 280px;
     }
     .service-btn-with-image[style*="background-image"] {
       background: transparent;
@@ -550,11 +551,18 @@
       .service-btn-with-image {
         width: 100% !important;
         max-width: 100%;
-        height: 180px !important;
+        height: 240px !important;
       }
       #services .grid {
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 1rem;
+        gap: 1.5rem;
+      }
+    }
+    @media screen and (min-width: 1025px) {
+      .service-btn-with-image {
+        width: 100%;
+        max-width: 450px;
+        height: 280px;
       }
     }
     /* 데스크톱에서만 변경 */
@@ -593,11 +601,20 @@
       font-weight: 500;
       font-size: 0.95rem;
     }
+    /* 페이지 좌우 여백 반응형 */
+    @media screen and (max-width: 1600px) {
+      header,
+      body > section,
+      body > div:not(.mobile-menu-overlay):not(.mobile-menu):not(:has(.mobile-menu)) {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+    }
   </style>
 </head>
 <body style="background: linear-gradient(to bottom, rgba(242, 242, 242, 1), rgba(216, 233, 223, 1)); font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;" class="text-gray-800">
   <!-- 상단 헤더 -->
-  <header class="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 bg-mint-200" role="banner">
+  <header class="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 bg-mint-200" style="margin-left: 398px; margin-right: 398px;" role="banner">
     <div class="flex items-center gap-2 logo-container">
       <a href="index.html" aria-label="네스트리빙케어 홈페이지"><img src="logo.svg" alt="네스트리빙케어 로고" class="w-7 h-7 md:w-8 md:h-8" width="32" height="32" /></a>
       <a href="index.html" class="text-base md:text-xl font-bold company-name" aria-label="네스트리빙케어 홈">네스트리빙케어</a>
@@ -653,7 +670,7 @@
   </div>
 
   <!-- 메인 비주얼 -->
-  <section class="text-left py-12 px-6 md:px-12 hero-section" role="main">
+  <section class="text-left py-12 px-6 md:px-12 hero-section" style="margin-left: 398px; margin-right: 398px;" role="main">
     <div class="hero-slide-container">
       <div class="hero-slide-image">
         <img src="images/cleaning1.png" alt="청소 서비스 1" />
@@ -676,7 +693,7 @@
   </section>
 
   <!-- 서비스 소개 -->
-  <section id="services" class="px-6 py-12" aria-labelledby="services-heading">
+  <section id="services" class="px-6 py-12" style="margin-left: 398px; margin-right: 398px;" aria-labelledby="services-heading">
     <h2 id="services-heading" class="text-2xl font-semibold mb-6">서비스 소개</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" role="list">
       <div class="rounded text-center service-btn service-btn-with-image cursor-pointer transition flex items-end justify-center relative overflow-hidden" style="background-image: url('images/homecleaning.jpeg'); background-size: cover; background-position: center;" role="listitem"><a href="homecleaning.html" class="block w-full h-full flex items-end justify-center pb-4 relative z-10 text-white font-bold text-lg" aria-label="홈클리닝 서비스">홈클리닝</a></div>
@@ -687,7 +704,7 @@
   </section>
 
   <!-- 시공 사례 -->
-  <section id="portfolio" class="px-6 py-12 bg-gray-50" aria-labelledby="portfolio-heading">
+  <section id="portfolio" class="px-6 py-12 bg-gray-50" style="margin-left: 398px; margin-right: 398px;" aria-labelledby="portfolio-heading">
     <h2 id="portfolio-heading" class="text-2xl font-semibold mb-6">시공 사례</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- 이미지 1 -->
@@ -775,12 +792,12 @@
     </div>
   </section>
   <!-- 무료견적받기 버튼 -->
-  <div class="w-full flex justify-center py-7">
+  <div class="w-full flex justify-center py-7" style="margin-left: 398px; margin-right: 398px;">
     <a href="https://talk.naver.com/profile/wp3ujeu" target="_blank" rel="noopener noreferrer" class="contact-btn px-8 py-3 rounded text-lg font-semibold inline-block text-center" aria-label="무료견적받기 버튼">무료견적받기</a>
   </div>
 
   <!-- 회사 소개 + 블로그 나란히 배치 -->
-  <section class="flex flex-col md:flex-row gap-8 px-6 py-12">
+  <section class="flex flex-col md:flex-row gap-8 px-6 py-12" style="margin-left: 398px; margin-right: 398px;">
     <!-- 회사 소개 -->
     <article id="about" class="md:w-1/2 w-full" aria-labelledby="about-heading">
       <div class="mb-6">
@@ -808,12 +825,12 @@
     </div>
   </section>
   <!-- 상담받기 버튼 -->
-  <div class="w-full flex justify-center py-7">
+  <div class="w-full flex justify-center py-7" style="margin-left: 398px; margin-right: 398px;">
     <a href="https://talk.naver.com/profile/wp3ujeu" target="_blank" rel="noopener noreferrer" class="contact-btn px-8 py-3 rounded text-lg font-semibold inline-block text-center" aria-label="상담받기 버튼">상담받기</a>
   </div>
 
   <!-- FAQ -->
-  <section id="faq" class="px-6 py-12" aria-labelledby="faq-heading">
+  <section id="faq" class="px-6 py-12" style="margin-left: 398px; margin-right: 398px;" aria-labelledby="faq-heading">
     <h2 id="faq-heading" class="text-2xl font-semibold mb-6">자주 묻는 질문 (FAQ)</h2>
     <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
       <details class="p-4 border rounded" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
