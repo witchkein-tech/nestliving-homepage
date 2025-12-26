@@ -1,12 +1,31 @@
+<!-- ======================================= -->
+<!--     네스트리빙케어 사업장클리닝 페이지    -->
+<!-- 본 파일은 사업장(병원, 사무실, 식당 등)   -->
+<!-- 클리닝 서비스 소개 및 상담용 홈페이지입니다 -->
+<!-- 주요 구조: Header, 모바일/PC 메뉴,        -->
+<!-- 3개 섹션(병원/사무실/식당), 차별포인트, CTA -->
+<!-- Tailwind CSS로 디자인, Pretendard 폰트 사용 -->
+<!-- ======================================= -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <!-- 메타 정보: 인코딩, 반응형, 검색제목 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>사업장클리닝 서비스 - 네스트리빙케어</title>
+  <!-- 외부 스타일: Tailwind(디자인용), Pretendard(폰트) -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <!-- =============================== -->
+  <!-- 내부 스타일: Glassmorphism/반응형
+       버튼, 배경 등 전체 UI 꾸밈용 -->
   <style>
+    /* ========================= CSS (내부 스타일) ===============================
+      - contact-btn, glass: 글래스(반투명) 스타일 커스텀, 버튼/카드 꾸밈
+      - 메뉴, 모바일 오버레이, 헤더/네비 반응형 미디어쿼리
+      - 각 사업장 섹션(병원, 사무실, 식당)별 배경/효과/타이틀 효과 등
+      - 수정/확장 시 하단부 CSS 및 Tailwind도 참고 필요
+    =========================================================================== */
     .contact-btn {
       position: relative;
       overflow: hidden;
@@ -551,9 +570,18 @@
         left: 200%;
       }
     }
+      /* ================== 위 CSS는 스타일/레이아웃 전역 적용용 ================== */
   </style>
 </head>
+<!-- ========================== BODY 영역 START ========================== -->
 <body style="background: linear-gradient(to bottom, rgba(242, 242, 242, 1), rgba(216, 233, 223, 1)); font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;" class="text-gray-800 min-h-screen">
+
+  <!-- ====================== HEADER(상단영역) =========================
+    - 로고 + 회사이름(좌측)
+    - PC 네비게이션 / 모바일 햄버거 메뉴 (우측)
+    - 반응형, 접근성(aria-*) 갖춤
+    - 메뉴 구성 수정/추가/삭제시 아래 ul/li 참조
+    ================================================================ -->
   <!-- 상단 헤더 -->
   <header class="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 bg-mint-200" role="banner">
     <div class="flex items-center gap-2 logo-container">
@@ -579,6 +607,10 @@
     </nav>
   </header>
 
+  <!-- ==================== 모바일 메뉴 오버레이/메뉴 =====================
+    - 모바일 뷰에서 햄버거버튼 클릭시 활성화되는 메뉴 오버레이/플로팅 메뉴
+    - 메뉴 추가/수정시 .mobile-menu-content 내부 a태그 수정
+    ==================================================================== -->
   <!-- 모바일 메뉴 오버레이 -->
   <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
   
@@ -600,8 +632,17 @@
       <a href="https://talk.naver.com/profile/wp3ujeu" target="_blank" rel="noopener noreferrer" class="mobile-menu-item">문의사항</a>
     </div>
   </div>
+  <!-- ======================= MAIN 영역(실제 본문) =========================
+    - 소개 Hero, 3대 사업장(병원/사무실/식당), 차별포인트, CTA(상담신청)
+    - 각 영역별로 class/주석 참고해서 수정 가능
+    ===================================================================== -->
   <main>
     <section class="text-gray-800 font-['Pretendard',-apple-system,BlinkMacSystemFont,system-ui,Roboto,'Helvetica Neue','Segoe UI','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif]">
+      <!-- ====================== HERO/메인 타이틀 영역 ============================
+        - 청소 서비스에 대한 메인 타이틀, 핵심 문구(브랜드, 신뢰 등)
+        - 가운데 정렬, 하단 테두리선(border-b) 있음
+        - 텍스트/타이틀만 변경 원할 때 이곳만 수정하면 됨
+      ======================================================================== -->
       <!-- Hero -->
       <div class="max-w-6xl mx-auto px-6 py-12 pb-8 text-center border-b border-gray-100">
         <h2 class="text-3xl font-bold mb-4 text-[#7BC4BB]"><span class="title-shine">사업장청소 서비스</span></h2>
@@ -612,11 +653,20 @@
         </p>
       </div>
       
+      <!-- ===================== 상담받기 버튼 =========================
+        - 네이버톡톡(https://talk.naver.com/profile/wp3ujeu) 상담으로 바로 연결됨
+        - 버튼 클릭 시 새 창에서 문의 가능
+      ============================================================== -->
       <!-- 상담받기 버튼 -->
       <div class="w-full flex justify-center py-4">
         <a href="https://talk.naver.com/profile/wp3ujeu" target="_blank" rel="noopener noreferrer" class="contact-btn px-8 py-3 rounded text-lg font-semibold inline-block text-center" aria-label="상담받기 버튼">상담받기</a>
       </div>
 
+      <!-- ======================== 병원/의료시설 청소 섹션 ==========================
+        - 좌측: 이미지 / 우측: 설명 텍스트 (큰 화면 기준, 모바일은 세로 배치)
+        - 의료법/살균프로세스/감염예방/정기소독 등 핵심 특징 명시
+        - 이미지는 images/hospital.jpg 사용, 필요하면 이미지명만 교체가능
+      ============================================================================ -->
       <!-- 병원 -->
       <div class="max-w-6xl mx-auto px-6 py-16">
         <div class="flex flex-col md:flex-row gap-8 items-center">
@@ -641,6 +691,11 @@
         </div>
       </div>
 
+      <!-- ======================= 사무실·오피스 청소 섹션 ===========================
+        - 우측: 이미지 / 좌측: 설명 텍스트(큰 화면 기준, 모바일은 세로)
+        - 미세먼지관리, 향기관리, 스케줄(야간/휴무 등), 업무효율 강조
+        - 이미지는 images/office.jpg, 필요시 교체
+      =========================================================================== -->
       <!-- 사무실 -->
       <div class="max-w-6xl mx-auto px-6 py-16">
         <div class="flex flex-col md:flex-row gap-8 items-center">
@@ -665,6 +720,10 @@
         </div>
       </div>
 
+      <!-- ======================= 식당·대형카페 청소 섹션 ===========================
+        - 좌측: 이미지 / 우측: 설명 텍스트(큰 화면 기준, 모바일 세로)
+        - 식품위생법·환기·냄새제거 강조, images/cafe.jpg
+      =========================================================================== -->
       <!-- 식당 -->
       <div class="max-w-6xl mx-auto px-6 py-16">
         <div class="flex flex-col md:flex-row gap-8 items-center">
@@ -689,6 +748,11 @@
         </div>
       </div>
 
+      <!-- ==================== 네스트리빙케어 차별 포인트 섹션 ======================
+        - glass 클래스카드 3개(전문성/맞춤관리/신뢰보장)
+        - 카드별 SVG 아이콘, 핵심문구, 설명으로 구성 (내용/순서 자유 수정)
+        - 추가/삭제/순서변경은 grid, glass 카드 참고
+      ======================================================================== -->
       <!-- 차별 포인트 -->
       <div class="max-w-6xl mx-auto px-6 py-20 bg-[#F9FBFB] border-t border-b border-[#E5F2F1]">
         <h3 class="text-2xl font-bold text-[#7BC4BB] mb-8 text-center"><span class="title-shine">네스트리빙케어만의 차별 포인트</span></h3>
@@ -734,6 +798,10 @@
         </div>
       </div>
 
+      <!-- ======================= CTA(무료진단 예약) 섹션 ========================
+        - 상담/문의 유도 위한 영역, 하단 고정 or 변경 가능
+        - 타이틀, 부가정보, 신청버튼(상단의 상담받기 버튼과 기능 동일)
+      ======================================================================== -->
       <!-- CTA -->
       <div class="text-center py-20">
         <h3 class="text-2xl font-bold mb-4 text-[#7BC4BB]">무료 현장진단 예약</h3>
@@ -742,16 +810,24 @@
       </div>
     </section>
   </main>
+  <!-- ======================= SCRIPT(JS) =========================
+    - 햄버거버튼(모바일) 클릭 시 메뉴 열기/닫기 제어
+    - 관련 요소: #hamburger-btn, #close-menu-btn, #mobile-menu, #mobile-menu-overlay
+    - body 스크롤 금지, 오버레이 클릭시 닫히는 처리, 메뉴 아이템 클릭시 자동 닫힘
+    - JS초보 사용자도 쉽게 이벤트 타겟/제어 관점별 주석 추가
+    ============================================================= -->
   <script>
-    // DOM 로드 후 실행
+    // DOM 컨텐츠 로드 완료 후 실행
     document.addEventListener('DOMContentLoaded', function() {
-      // 모바일 메뉴 토글
-      const hamburgerBtn = document.getElementById('hamburger-btn');
-      const closeMenuBtn = document.getElementById('close-menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+      // [1] 관련 엘리먼트들 변수에 할당
+      const hamburgerBtn = document.getElementById('hamburger-btn'); // 햄버거버튼(모바일)
+      const closeMenuBtn = document.getElementById('close-menu-btn'); // 닫기버튼(모바일)
+      const mobileMenu = document.getElementById('mobile-menu'); // 모바일 메뉴 전체
+      const mobileMenuOverlay = document.getElementById('mobile-menu-overlay'); // 검은 오버레이
 
+      // [2] 모든 요소 정상 할당된 경우만 메뉴 동작 연결
       if (hamburgerBtn && closeMenuBtn && mobileMenu && mobileMenuOverlay) {
+        // 메뉴 열기 함수: 모바일 메뉴 div/오버레이에 'active' 클래스 추가, body 스크롤 막기
         function openMobileMenu() {
           mobileMenu.classList.add('active');
           mobileMenuOverlay.classList.add('active');
@@ -760,6 +836,7 @@
           document.body.style.overflow = 'hidden';
         }
 
+        // 메뉴 닫기 함수: 'active' 클래스 제거, body 스크롤 원복
         function closeMobileMenu() {
           mobileMenu.classList.remove('active');
           mobileMenuOverlay.classList.remove('active');
@@ -768,18 +845,23 @@
           document.body.style.overflow = '';
         }
 
+        // 햄버거버튼 클릭 시 메뉴 open
         hamburgerBtn.addEventListener('click', openMobileMenu);
+        // 닫기버튼 및 오버레이 클릭 시, 메뉴 close
         closeMenuBtn.addEventListener('click', closeMobileMenu);
         mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 
-        // 모바일 메뉴 아이템 클릭 시 메뉴 닫기
+        // 모바일 메뉴 내 메뉴 클릭 시 자동 닫힘
         const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
         mobileMenuItems.forEach(item => {
           item.addEventListener('click', closeMobileMenu);
         });
       }
+      // 관련 요소 누락 시 메뉴 동작 X
     });
   </script>
+  <!-- ===================== BODY/MAIN영역 끝 ===================== -->
 </body>
+<!-- ======================== HTML 문서 끝 ======================== -->
 </html>
 

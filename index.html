@@ -1,3 +1,9 @@
+<!-- =========================================== -->
+<!--     네스트리빙케어 - 메인(인덱스) 페이지      -->
+<!-- 프리미엄 공간케어, 클리닝 브랜드 대표 홈    -->
+<!-- 전체 구조: Header, 서비스/시공 사례/소개/FAQ -->
+<!-- Tailwind, Pretendard, 반응형, SNS, 블로그 등 -->
+<!-- =========================================== -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -37,6 +43,7 @@
   <link rel="icon" type="image/svg+xml" href="/logo.svg" />
   
   <!-- Stylesheets -->
+  <!-- Tailwind: 전체 반응형 디자인/레이아웃, Pretendard: 웹폰트 -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
   
@@ -105,6 +112,13 @@
   }
   </script>
   <style>
+    /* ==================== 전역 스타일 설명 =====================
+      - hero-title: 메인 타이틀(빛 효과), hero-section: 메인 배경 슬라이드
+      - service-btn, contact-btn: 서비스 및 CTA 버튼
+      - blog-loading: 블로그 로딩, FAQ/시공사례 등 각 레이아웃 꾸밈
+      - 각 파트별 media query(해상도·디바이스에 따른 그리드, 버튼 크기 등)
+      - 추가 스타일/수정시 주석 참고하여 하단부에 작성하기
+    ======================================================== */
     /* 히어로 섹션 빛 효과 */
     .hero-title {
       position: relative;
@@ -617,6 +631,12 @@
   </style>
 </head>
 <body style="background: linear-gradient(to bottom, rgba(242, 242, 242, 1), rgba(216, 233, 223, 1)); font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;" class="text-gray-800">
+
+  <!-- ====================== HEADER(상단) ====================
+    - 로고/회사명(좌), 네비게이션(우)
+    - 데스크톱: 상단 네비 / 모바일: 햄버거 메뉴
+    - 메뉴 부 추가/수정은 nav ul/li 및 아래 모바일 메뉴 쪽 참고
+  ======================================================== -->
   <!-- 상단 헤더 -->
   <header class="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 bg-mint-200" role="banner">
     <div class="flex items-center gap-2 logo-container">
@@ -651,6 +671,10 @@
     </nav>
   </header>
 
+  <!-- ==================== 모바일 메뉴 오버레이/플로팅 메뉴 ====================
+    - 모바일 햄버거 메뉴 클릭 시, 오버레이(검정 배경) & 메뉴(
+    - 메뉴 항목 수정시 .mobile-menu-content 부분 a 태그로 관리
+  ======================================================================== -->
   <!-- 모바일 메뉴 오버레이 -->
   <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
   
@@ -673,7 +697,10 @@
     </div>
   </div>
 
-  <!-- 메인 비주얼 -->
+  <!-- ==================== 메인 히어로 비주얼+슬라이드+CTA ====================
+    - hero-section: 배경 이미지 슬라이드, 로고, 메인 제목, CTA(문의)
+    - 이미지/문구 변경하고 싶을 때 여기 부분 Editing
+  ======================================================================== -->
   <section class="text-left py-12 px-6 md:px-12 hero-section" role="main">
     <div class="hero-slide-container">
       <div class="hero-slide-image">
@@ -696,7 +723,10 @@
     </div>
   </section>
 
-  <!-- 서비스 소개 -->
+  <!-- ===================== 서비스 소개(메뉴 타일) =====================
+    - 홈/사업장/특수/부가서비스 4개 카드
+    - 각 카드 style(이미지 등), href만 변경하면 타겟 서비스 수정 가능
+  ================================================================ -->
   <section id="services" class="px-6 py-12" aria-labelledby="services-heading">
     <h2 id="services-heading" class="text-2xl font-semibold mb-6">서비스 소개</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" role="list">
@@ -707,7 +737,10 @@
     </div>
   </section>
 
-  <!-- 시공 사례 -->
+  <!-- ======================== 시공 사례(포트폴리오) ============================
+    - gif/인스타 릴스 등 다양한 작업 사례 이미지/영상 표시
+    - 이미지/릴스 URL, alt 등만 교체하면 사례 편집
+  ======================================================================== -->
   <section id="portfolio" class="px-6 py-12 bg-gray-50" aria-labelledby="portfolio-heading">
     <h2 id="portfolio-heading" class="text-2xl font-semibold mb-6">시공 사례</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -795,12 +828,16 @@
       </div>
     </div>
   </section>
-  <!-- 무료견적받기 버튼 -->
+  <!-- =================  CTA(무료견적받기 버튼) ================== -->
   <div class="w-full flex justify-center py-7">
     <a href="https://talk.naver.com/profile/wp3ujeu" target="_blank" rel="noopener noreferrer" class="contact-btn px-8 py-3 rounded text-lg font-semibold inline-block text-center" aria-label="무료견적받기 버튼">무료견적받기</a>
   </div>
 
-  <!-- 회사 소개 + 블로그 나란히 배치 -->
+  <!-- ======================= 회사 소개 + 블로그 영역 =======================
+    - 좌: 회사 소개 (소개 버튼·텍스트·대표사진)
+    - 우: 네이버 블로그(최신글 3개, RSS 자동)
+    - 회사 설명/이미지/블로그 주소 등만 변경해서 커스텀 가능
+  ====================================================================== -->
   <section class="flex flex-col md:flex-row gap-8 px-6 py-12">
     <!-- 회사 소개 -->
     <article id="about" class="md:w-1/2 w-full" aria-labelledby="about-heading">
@@ -828,12 +865,15 @@
       </ul>
     </div>
   </section>
-  <!-- 상담받기 버튼 -->
+  <!-- =============== 상담받기 버튼(하단 고정 CTA) ================ -->
   <div class="w-full flex justify-center py-7">
     <a href="https://talk.naver.com/profile/wp3ujeu" target="_blank" rel="noopener noreferrer" class="contact-btn px-8 py-3 rounded text-lg font-semibold inline-block text-center" aria-label="상담받기 버튼">상담받기</a>
   </div>
 
-  <!-- FAQ -->
+  <!-- ===================== FAQ(자주 묻는 질문) =====================
+    - Q&A 토글(details/summary)로 구현
+    - 질문/답변 자유롭게 추가·수정 가능
+  ================================================================= -->
   <section id="faq" class="px-6 py-12" aria-labelledby="faq-heading">
     <h2 id="faq-heading" class="text-2xl font-semibold mb-6">자주 묻는 질문 (FAQ)</h2>
     <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
@@ -852,10 +892,18 @@
     </div>
   </section>
 
-  <!-- 푸터 -->
+  <!-- =========================== 푸터 영역 ===========================
+    - 저작권 및 정보 기재, 하단 중앙정렬
+    - 연도/브랜드명 등 자유 변경 가능
+  ================================================================== -->
   <footer class="text-center py-6 text-sm text-gray-500" role="contentinfo">
     <p>&copy; 2025 네스트리빙케어. All rights reserved.</p>
   </footer>
+  <!-- =================== SCRIPT(JS) ===================
+    - 햄버거 메뉴/오버레이/드롭다운(홈클리닝)/블로그 자동로드
+    - 각 함수, DOM id별 역할별로 주석·설명 이미 코드 내 있음
+    - 기능 추가 확장·오류 발생시 관련 부분만 함수 확인, 쉽게 수정
+  ================================================== -->
   <script>
     // DOM 로드 후 실행
     document.addEventListener('DOMContentLoaded', function() {

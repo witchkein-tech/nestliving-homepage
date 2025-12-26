@@ -1,12 +1,29 @@
+<!-- =========================================== -->
+<!--      네스트리빙케어 - 부가서비스 페이지       -->
+<!-- 새집증후군케어, 줄눈시공, 탄성코트, 에어컨세척 -->
+<!-- 주요 구조: Header, 메뉴, 4개 서비스 카드,    -->
+<!-- 각 카드별 상세보기 링크, 반응형 지원         -->
+<!-- =========================================== -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <!-- 문서 메타 정보 및 외부 리소스 (폰트, CSS) -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>부가서비스 - 네스트리빙케어</title>
+  <!-- Tailwind: 반응형/디자인 유틸, Pretendard: 웹폰트 -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <!-- ========================= 내부 스타일 =========================
+    - contact-btn, glass: 버튼/카드에 glassmorphism 효과
+    - 메뉴, 반응형, 기타 레이아웃 꾸밈 (수정 참고)
+  ================================================================= -->
   <style>
+    /* =================== glass/버튼/네비 등 스타일 =====================
+      - contact-btn: 주요 CTA버튼(상세보기) 효과/호버
+      - glass: 각 서비스 카드 배경 효과 (반투명/그림자)
+      - 메뉴, media query등 반응형 지원
+    ================================================================ */
     .contact-btn {
       position: relative;
       overflow: hidden;
@@ -266,9 +283,16 @@
         display: block;
       }
     }
+    /* ===== 위 스타일은 (버튼/카드/글로벌 레이아웃 용) ===== */
   </style>
 </head>
+<!-- ========================= BODY 영역 시작 ========================= -->
 <body style="background: linear-gradient(to bottom, rgba(242, 242, 242, 1), rgba(216, 233, 223, 1)); font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;" class="text-gray-800 min-h-screen">
+
+  <!-- =============== HEADER(상단) ===============
+    - 로고, 회사명, 메뉴(PC/모바일 동시 지원)
+    - 메뉴 추가/수정시 ul/li 부분만 건드리면 됨
+    =========================================== -->
   <!-- 상단 헤더 -->
   <header class="flex items-center justify-between px-4 md:px-6 py-3 md:py-4 bg-mint-200" role="banner">
     <div class="flex items-center gap-2 logo-container">
@@ -294,6 +318,10 @@
     </nav>
   </header>
 
+  <!-- ========== 모바일 메뉴 오버레이 및 메뉴 ===========
+    - 모바일 햄버거 클릭시 보이는 검정 뒷배경(div), 플로팅 메뉴
+    - 메뉴 추가/수정시 .mobile-menu-content 내부 a 태그 관리
+  ================================================== -->
   <!-- 모바일 메뉴 오버레이 -->
   <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
   
@@ -315,6 +343,11 @@
       <a href="https://talk.naver.com/profile/wp3ujeu" target="_blank" rel="noopener noreferrer" class="mobile-menu-item">문의사항</a>
     </div>
   </div>
+  <!-- =========================== MAIN 본문 =============================
+    - 부가서비스 4개 카드(새집증후군케어, 줄눈시공, 탄성코트, 에어컨세척)
+    - 각 카드별 아이콘, 제목, 설명, 상세보기 링크(스마트스토어/네이버톡톡)
+    - 카드 추가/삭제/수정시 grid 내부 div 카드 구조 참고
+  ================================================================== -->
   <main class="px-6 py-14 md:py-16 max-w-5xl mx-auto">
     <h2 class="text-3xl font-bold mb-12 text-center">부가서비스</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -368,16 +401,25 @@
       </div>
     </div>
   </main>
+  <!-- ======================= SCRIPT(JS) =========================
+    - 햄버거버튼(모바일) 클릭 시 메뉴 열기/닫기 제어
+    - 관련 요소: #hamburger-btn, #close-menu-btn, #mobile-menu, #mobile-menu-overlay
+    - body 스크롤 금지, 오버레이 클릭시 닫히는 처리, 메뉴 아이템 클릭시 자동 닫힘
+    - JS초보 사용자도 쉽게 이벤트 타겟/제어 관점별 주석 추가
+    ============================================================= -->
   <script>
-    // DOM 로드 후 실행
+    // DOM 컨텐츠 로드 완료 후 실행
     document.addEventListener('DOMContentLoaded', function() {
+      // [1] 관련 엘리먼트들 변수에 할당
       // 모바일 메뉴 토글
       const hamburgerBtn = document.getElementById('hamburger-btn');
       const closeMenuBtn = document.getElementById('close-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
       const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 
+      // [2] 모든 요소 정상 할당된 경우만 메뉴 동작 연결
       if (hamburgerBtn && closeMenuBtn && mobileMenu && mobileMenuOverlay) {
+        // 메뉴 열기 함수: 모바일 메뉴 div/오버레이에 'active' 클래스 추가, body 스크롤 막기
         function openMobileMenu() {
           mobileMenu.classList.add('active');
           mobileMenuOverlay.classList.add('active');
@@ -386,6 +428,7 @@
           document.body.style.overflow = 'hidden';
         }
 
+        // 메뉴 닫기 함수: 'active' 클래스 제거, body 스크롤 원복
         function closeMobileMenu() {
           mobileMenu.classList.remove('active');
           mobileMenuOverlay.classList.remove('active');
@@ -394,18 +437,23 @@
           document.body.style.overflow = '';
         }
 
+        // 햄버거버튼 클릭 시 메뉴 open
         hamburgerBtn.addEventListener('click', openMobileMenu);
+        // 닫기버튼 및 오버레이 클릭 시, 메뉴 close
         closeMenuBtn.addEventListener('click', closeMobileMenu);
         mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 
-        // 모바일 메뉴 아이템 클릭 시 메뉴 닫기
+        // 모바일 메뉴 내 메뉴 클릭 시 자동 닫힘
         const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
         mobileMenuItems.forEach(item => {
           item.addEventListener('click', closeMobileMenu);
         });
       }
+      // 관련 요소 누락 시 메뉴 동작 X
     });
   </script>
+  <!-- ===================== BODY/MAIN영역 끝 ===================== -->
 </body>
+<!-- ======================== HTML 문서 끝 ======================== -->
 </html>
 
